@@ -11,7 +11,7 @@ contract UpgradeabilityProxy is BaseUpgradeabilityProxy {
         );
         _setImplementation(_logic);
         if (_data.length > 0) {
-            (bool success, ) = logic.delegatecall(_data);
+            (bool success, ) = _logic.delegatecall(_data);
             require(success);
         }
     }
